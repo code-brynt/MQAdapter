@@ -1,0 +1,22 @@
+﻿@model string
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <div class="lead">
+        <h1>Publish a message</h1>
+        <p>Please enter the message to publish.</p>
+    </div>
+
+    <div>
+        <form asp-action="Publish">
+            <div class="form-group">
+                <input class="form-control" for="message" name="message" autofocus/>
+            </div>
+
+            <button class="btn btn-primary" name="button">Submit</button>
+        </form>
+    </div>
+</div>

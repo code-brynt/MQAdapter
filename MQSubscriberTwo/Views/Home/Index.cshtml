@@ -1,0 +1,20 @@
+﻿@model List<Message>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1>Messages</h1>
+    <p>
+        @if (@Model != null && Model.Any())
+        {
+            <div>
+                @foreach (var message in @Model)
+                {
+                    <div>@message.Data</div>
+                }
+            </div>
+        }
+    </p>
+</div>
