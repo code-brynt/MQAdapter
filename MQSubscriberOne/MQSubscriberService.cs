@@ -34,7 +34,6 @@ namespace MQSubscriberOne
 
         private async Task ListenForMessages(CancellationToken cancellationToken)
         {
-            //Task.Run(() => _mqAdapterService.ListenToQueue("DEV.QUEUE.1", MessageHandler, ConnectionStatusChangedHandler));
             await Task.Run(() => _mqAdapterService.ListenToTopic("BroadCast", MessageHandler, ConnectionStatusChangedHandler), cancellationToken);
         }
 
@@ -56,7 +55,6 @@ namespace MQSubscriberOne
                 dbContext.Messages.Add(message);
                 dbContext.SaveChanges();
             }
-
 
             _logger.LogInformation(msg);
         }
