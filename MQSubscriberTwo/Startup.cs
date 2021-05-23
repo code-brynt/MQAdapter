@@ -23,7 +23,7 @@ namespace MQSubscriberTwo
         {
             services.AddDbContext<ApplicationDbContext>(opt => opt.UseInMemoryDatabase("SubscriberTwo"));
 
-            services.AddSingleton<IMQProxyConnection>(new MQProxyConnection
+            services.AddSingleton<IMQAdapterConnection>(new MQAdapterConnection
             {
                 QueueManagerName = "QM1",
                 UserId = "app",
@@ -33,7 +33,7 @@ namespace MQSubscriberTwo
                 HostName = "localhost(1414)"
             });
 
-            services.AddSingleton<IMQProxyService, MQProxyService>();
+            services.AddSingleton<IMQAdapterService, MQAdapterService>();
 
             services.AddControllersWithViews();
         }

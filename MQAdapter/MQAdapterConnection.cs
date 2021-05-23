@@ -1,6 +1,6 @@
 ﻿namespace MQAdapter
 {
-    public class MQProxyConnection : IMQProxyConnection
+    public class MQAdapterConnection : IMQAdapterConnection
     {
         public string HostName { get; set; }
         public int Port { get; set; }

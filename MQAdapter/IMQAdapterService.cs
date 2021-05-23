@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace MQAdapter
 {
-    public interface IMQProxyService
+    public interface IMQAdapterService
     {
         bool SendMessageToQueue(string queueName, object objToSend);
         bool SendMessageToTopic(string topicName, object objToSend);

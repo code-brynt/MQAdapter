@@ -14,13 +14,13 @@ namespace MQSubscriberTwo
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly ILogger<MQSubscriberService> _logger;
-        private readonly IMQProxyService _mqProxyService;
+        private readonly IMQAdapterService _mqAdapterService;
 
-        public MQSubscriberService(IServiceProvider sp, ILogger<MQSubscriberService> logger, IMQProxyService mqProxyService)
+        public MQSubscriberService(IServiceProvider sp, ILogger<MQSubscriberService> logger, IMQAdapterService mqAdapterService)
         {
             _serviceProvider = sp;
             _logger = logger;
-            _mqProxyService = mqProxyService;
+            _mqAdapterService = mqAdapterService;
         }
 
         protected override async Task ExecuteAsync(CancellationToken cancellationToken)
@@ -34,8 +34,8 @@ namespace MQSubscriberTwo
 
         private async Task ListenForMessages(CancellationToken cancellationToken)
         {
-            //Task.Run(() => _mqProxyService.ListenToQueue("DEV.QUEUE.1", MessageHandler, ConnectionStatusChangedHandler));
-            await Task.Run(() => _mqProxyService.ListenToTopic("BroadCast", MessageHandler, ConnectionStatusChangedHandler), cancellationToken);
+            //Task.Run(() => _mqAdapterService.ListenToQueue("DEV.QUEUE.1", MessageHandler, ConnectionStatusChangedHandler));
+            await Task.Run(() => _mqAdapterService.ListenToTopic("BroadCast", MessageHandler, ConnectionStatusChangedHandler), cancellationToken);
         }
 
         private void ConnectionStatusChangedHandler(IMQConnectionStatus connectionStatus)

@@ -13,11 +13,11 @@ namespace MQPublisher.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IMQProxyService _mqProxyService;
-        public HomeController(ILogger<HomeController> logger, IMQProxyService mqProxyService)
+        private readonly IMQAdapterService _mqAdapterService;
+        public HomeController(ILogger<HomeController> logger, IMQAdapterService mqAdapterService)
         {
             _logger = logger;
-            _mqProxyService = mqProxyService;
+            _mqAdapterService = mqAdapterService;
         }
 
         public IActionResult Index()
@@ -28,8 +28,8 @@ namespace MQPublisher.Controllers
         [HttpPost]
         public IActionResult Publish(string message)
         {
-            //_mqProxyService.SendMessageToQueue("DEV.QUEUE.1", message);
-            _mqProxyService.SendMessageToTopic("BroadCast", message);
+            //_mqAdapterService.SendMessageToQueue("DEV.QUEUE.1", message);
+            _mqAdapterService.SendMessageToTopic("BroadCast", message);
             return View(nameof(Index));
         }
 

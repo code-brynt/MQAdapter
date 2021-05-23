@@ -19,7 +19,7 @@ namespace MQPublisher
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IMQProxyConnection>(new MQProxyConnection
+            services.AddSingleton<IMQAdapterConnection>(new MQAdapterConnection
             {
                 QueueManagerName = "QM1",
                 UserId = "app",
@@ -29,7 +29,7 @@ namespace MQPublisher
                 HostName = "localhost(1414)"
             });
 
-            services.AddTransient<IMQProxyService, MQProxyService>();
+            services.AddTransient<IMQAdapterService, MQAdapterService>();
 
             services.AddControllersWithViews();
         }

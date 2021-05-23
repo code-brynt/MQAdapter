@@ -21,7 +21,7 @@
 
         public override string ToString()
         {
-            return $"IBM MQ Proxy Connection Status Changed, Status: {Status}, QueueManager: {QueueManager}, TopicQueueName: {TopicQueueName}.";
+            return $"IBM MQ Adapter Connection Status Changed, Status: {Status}, QueueManager: {QueueManager}, TopicQueueName: {TopicQueueName}.";
         }
     }
 }

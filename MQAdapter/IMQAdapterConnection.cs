@@ -1,6 +1,6 @@
 ﻿namespace MQAdapter
 {
-    public interface IMQProxyConnection
+    public interface IMQAdapterConnection
     {
         string QueueManagerName { get; set; }
         string Channel { get; set; }

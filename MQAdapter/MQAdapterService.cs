@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace MQAdapter
 {
-    public class MQProxyService : IMQProxyService
+    public class MQAdapterService : IMQAdapterService
     {
         private Hashtable _queueManagerProperties;
-        private readonly IMQProxyConnection _configuration;
-        private readonly ILogger<MQProxyService> _logger;
+        private readonly IMQAdapterConnection _configuration;
+        private readonly ILogger<MQAdapterService> _logger;
 
-        public MQProxyService(IMQProxyConnection configuration, ILogger<MQProxyService> logger)
+        public MQAdapterService(IMQAdapterConnection configuration, ILogger<MQAdapterService> logger)
         {
             _configuration = configuration;
             _logger = logger;

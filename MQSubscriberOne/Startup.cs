@@ -23,9 +23,9 @@ namespace MQSubscriberOne
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(opt => opt.UseInMemoryDatabase("SubscriberTwo"));
+            services.AddDbContext<ApplicationDbContext>(opt => opt.UseInMemoryDatabase("SubscriberOne"));
 
-            services.AddSingleton<IMQProxyConnection>(new MQProxyConnection
+            services.AddSingleton<IMQAdapterConnection>(new MQAdapterConnection
             {
                 QueueManagerName = "QM1",
                 UserId = "app",
@@ -35,13 +35,13 @@ namespace MQSubscriberOne
                 HostName = "localhost(1414)"
             });
 
-            services.AddSingleton<IMQProxyService, MQProxyService>();
+            services.AddSingleton<IMQAdapterService, MQAdapterService>();
 
             services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMQProxyService mqProxy, ILogger<Startup> logger, ApplicationDbContext dbContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMQAdapterService mqAdapter, ILogger<Startup> logger, ApplicationDbContext dbContext)
         {
             if (env.IsDevelopment())
             {
